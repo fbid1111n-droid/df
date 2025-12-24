@@ -89,22 +89,15 @@ export default function RoyalCamsLanding() {
   const opacity = useTransform(scrollYProgress, [0, 0.1], [1, 0.9]);
 
   const handleExternalRedirect = () => {
-    console.log('Redirecting to:', OFFER_LINK);
-    console.log('Link length:', OFFER_LINK.length);
-    console.log('Link starts with https:', OFFER_LINK.startsWith('https'));
-    
     try {
       // Try to open in new tab first
       const newWindow = window.open(OFFER_LINK, '_blank');
-      console.log('window.open result:', newWindow);
       
       // If popup was blocked, try direct navigation
       if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
-        console.log('Popup blocked, using direct navigation');
         window.location.href = OFFER_LINK;
       }
     } catch (error) {
-      console.log('Error opening link, using fallback:', error);
       // Fallback to direct navigation
       window.location.href = OFFER_LINK;
     }
@@ -226,23 +219,13 @@ export default function RoyalCamsLanding() {
 
           <div className="flex items-center gap-4">
             <button 
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                console.log('LOG IN clicked (HTML button)');
-                handleExternalRedirect();
-              }}
+              onClick={handleExternalRedirect}
               className="hidden sm:flex text-zinc-400 hover:text-white font-bold text-xs uppercase tracking-widest bg-transparent border-none cursor-pointer"
             >
               Log In
             </button>
             <button 
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                console.log('JOIN FREE clicked (HTML button)');
-                handleExternalRedirect();
-              }} 
+              onClick={handleExternalRedirect}
               className="bg-[#D4AF37] hover:bg-white text-black font-black px-8 h-12 rounded-full shadow-[0_10px_30px_rgba(212,175,55,0.2)] transition-all cursor-pointer border-none"
             >
               JOIN FREE
@@ -293,25 +276,6 @@ export default function RoyalCamsLanding() {
                 ACCESS THE VAULT
                 <ChevronRight className="ml-2 w-6 h-6" />
               </Button>
-              
-              {/* Test button for debugging */}
-              <button 
-                onClick={() => {
-                  console.log('Test button clicked');
-                  alert('Test button works! Now trying external redirect...');
-                  handleExternalRedirect();
-                }}
-                style={{
-                  background: 'red',
-                  color: 'white',
-                  padding: '10px 20px',
-                  border: 'none',
-                  borderRadius: '5px',
-                  cursor: 'pointer'
-                }}
-              >
-                TEST LINK
-              </button>
               <div onClick={handleExternalRedirect} className="flex items-center gap-6 px-8 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-xl group cursor-pointer hover:bg-white/10 transition-colors">
                 <div className="flex -space-x-3">
                   {[1,2,3].map(i => (
