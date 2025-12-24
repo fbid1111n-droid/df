@@ -6,7 +6,8 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint"
+        "lint": "next lint",
+        "export": "next build && next export"
     },
     "dependencies": {
         "@radix-ui/react-slot": "^1.2.3",
@@ -24,6 +25,7 @@
         "@types/node": "^20",
         "@types/react": "^19",
         "@types/react-dom": "^19",
+        "autoprefixer": "^10.4.14",
         "eslint": "^9.38.0",
         "eslint-config-next": "^16.0.1",
         "postcss": "^8",
